@@ -1,0 +1,41 @@
+{
+  "name": "report_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "kcors": "^2.2.1",
+    "koa": "^2.0.0-alpha.8",
+    "koa-bodyparser": "^3.2.0",
+    "koa-router": "^7.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "babel-register": "^6.23.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon --exec npm run start",
+    "build": "babel src -d build",
+    "test": "npm run build; mocha --require 'babel-polyfill' --compilers js:babel-register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "yes"
+  },
+   "babel": {
+    "presets": [
+      "es2015",
+      "stage-3"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}
