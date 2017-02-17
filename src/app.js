@@ -1,0 +1,15 @@
+import Koa from 'koa';
+import config from './config';
+import bodyParser from 'koa-bodyparser';
+import cors from 'kcors';
+
+const app = new Koa()
+  .use(cors())
+  .use(async (ctx, next) => {
+    ctx.state.collections = config.collections;
+    ctx.state.authorizationHeader = `Key ${config.key}`;
+    await next();
+  })
+  .use(bodyParser())
+
+export default app
