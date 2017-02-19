@@ -8,8 +8,8 @@ import convert from 'koa-convert';
 
 export default function () {
   return compose([
-    // cors(),
-    // bodyParser(),
-     logger()
+    convert(cors()),
+    convert(bodyParser()),
+    convert(logger())
   ])
 }
