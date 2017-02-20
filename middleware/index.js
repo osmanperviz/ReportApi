@@ -7,12 +7,14 @@ import compose from 'koa-compose';
 import convert from 'koa-convert';
 
 import errorHandeling from './handle-error'
+import database from './database'
 
 export default function () {
   return compose([
     convert(cors()),
     convert(bodyParser()),
     convert(logger()),
-    errorHandeling()
+    errorHandeling(),
+    database()
   ])
 }

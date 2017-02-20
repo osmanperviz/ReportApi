@@ -6,5 +6,4 @@ import routes from '../api'
 const app = new Koa()
   .use(middleware())
   .use(routes)
-  console.log(app);
 export default app
