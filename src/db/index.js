@@ -1,3 +1,4 @@
+import Bookshelf from 'bookshelf';
 import dbConfig from '../../knexfile';
 
 var database;
@@ -8,6 +9,6 @@ if (process.env.NODE_ENV == 'production') {
 }
 
 const knex = require('knex')(database);
-const bookshelf = require('bookshelf')(dbConfig);
+const bookshelf = Bookshelf(knex);
 
-export default bookshelf;
+export default bookshelf

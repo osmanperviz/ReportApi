@@ -5,10 +5,8 @@ import db from '../../db'
 import Report from '../../models/report'
 
 router.get('/', async (ctx, next) => {
-
-  var report = await Report.where({}).fetchAll()
-
-  ctx.body = report
+  var reports = await Report.where({}).fetchAll()
+  ctx.body = reports
 })
 
 export default router
