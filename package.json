@@ -8,6 +8,7 @@
     "kcors": "^2.2.1",
     "koa": "^2.0.0-alpha.8",
     "koa-bodyparser": "^3.2.0",
+    "koa-bookshelf": "0.0.2",
     "koa-router": "^7.0.1"
   },
   "devDependencies": {
@@ -30,7 +31,7 @@
     "type": "git",
     "url": "yes"
   },
-   "babel": {
+  "babel": {
     "presets": [
       "es2015",
       "stage-3"

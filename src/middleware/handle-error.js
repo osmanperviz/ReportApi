@@ -3,7 +3,7 @@ export default function () {
     try {
       await next();
     } catch (err) {
-      log.error(err);
+      console.error(err);
       ctx.status = err.status || 500;
       ctx.body = err.message;
       ctx.app.emit('error', err, ctx);
