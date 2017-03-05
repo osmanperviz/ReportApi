@@ -1,9 +1,11 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('report', (table) =>{
-    table.increments();
-    table.string('device_id').notNullable();
+  return knex.schema.createTable('report', (table) => {
+    table.increments().primary().notNullable();
     table.string('address').notNullable();
+    table.string('img_src');
+    table.integer('device_id').references('device.id')
+    table.timestamps();
   })
 };
 
