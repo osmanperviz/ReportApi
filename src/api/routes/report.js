@@ -1,5 +1,5 @@
 import Router from 'koa-router'
-const router = new Router({ prefix: '/report' })
+const router = new Router({ prefix: '/reports' })
 import db from '../../db'
 
 import Report from '../../models/report'
@@ -12,14 +12,23 @@ router.get('/', async (ctx, next) => {
 router.get('/:id', async (ctx, next) => {
   try {
     const report = await Report.where({ id: ctx.params.id }).fetch()
-    if (!report) {
-      ctx.throw(404)
-    }
-    ctx.body = {
-      report
-    }
+
+    if (!report) { ctx.throw(404) }
+    ctx.body = { report }
+
   } catch (err) {
     ctx.throw(err.status)
+  }
+})
+
+router.post('/', async (ctx, next) => {
+  const report = new Report(ctx.request.body.report)
+  try {
+    await report.save()
+    ctx.body = { report }
+
+  } catch (err) {
+    ctx.throw(422, err.message)
   }
 })
 

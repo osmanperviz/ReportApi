@@ -1,7 +1,7 @@
 import db from '../db';
 
 const Report = db.Model.extend({
-  tableName: 'report'
+  tableName: 'report',
 
   device: () => {
     return this.belongsTo(Device)
