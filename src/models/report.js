@@ -8,16 +8,19 @@ const Report = db.Model.extend({
     message: {
       isRequired: true,
       error: 'Message is required!',
-    }
+    },
     latitude: 'isRequired',
     longitude: 'isRequired',
-    administrativeCentar: 'isRequired',
+    administrative_area_id: 'isRequired',
     address: 'isRequired',
     device_id: 'isRequired'
   },
 
   device: () => {
     return this.belongsTo(Device)
+  },
+  administrative_area: () => {
+    return this.belongsTo(AdministrativeArea)
   }
 })
 

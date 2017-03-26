@@ -5,10 +5,10 @@ exports.up = function(knex, Promise) {
     table.string('message').notNullable();
     table.string('latitude').notNullable();
     table.string('longitude').notNullable();
-    table.string('administrativeCentar').notNullable();
     table.string('address').notNullable();
     table.string('image_url');
 
+    table.integer('administrative_area_id').references('administrative_area.id')
     table.integer('device_id').references('device.id')
     table.timestamps();
   })

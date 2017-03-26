@@ -5,8 +5,8 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('device').insert([
-        {id: 'num1', manufacturer: 'apple'},
-        {id: 'num2', manufacturer: 'lg'},
+        {id: 'num1', device_id: '234jvkcwerf6768'},
+        {id: 'num2', manufacturer: '234jvkcwerf6756gj'},
       ]);
     });
 };
