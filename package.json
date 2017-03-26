@@ -5,10 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "babel-polyfill": "^6.23.0",
+    "bookshelf-validate": "^2.0.3",
     "kcors": "^2.2.1",
     "koa": "^2.0.0-alpha.8",
     "koa-bodyparser": "^3.2.0",
     "koa-bookshelf": "0.0.2",
+    "koa-multer": "^1.0.1",
     "koa-router": "^7.0.1"
   },
   "devDependencies": {

@@ -1,8 +1,10 @@
 import Router from 'koa-router'
-const router = new Router({ prefix: '/reports' })
 import db from '../../db'
+const router = new Router({ prefix: '/reports' })
+
 
 import Report from '../../models/report'
+import EmailNotificationService from '../../services/EmailNotificationService'
 
 router.get('/', async (ctx, next) => {
   const reports = await Report.where({}).fetchAll()
@@ -14,6 +16,7 @@ router.get('/:id', async (ctx, next) => {
     const report = await Report.where({ id: ctx.params.id }).fetch()
 
     if (!report) { ctx.throw(404) }
+
     ctx.body = { report }
 
   } catch (err) {
@@ -22,13 +25,17 @@ router.get('/:id', async (ctx, next) => {
 })
 
 router.post('/', async (ctx, next) => {
-  const report = new Report(ctx.request.body.report)
+  debugger;
+  const obj = Object.assign({}, ...ctx.request.body._parts.map(([ key, value ]) => ({ [key]: value })));
+  const report = new Report(obj)
   try {
     await report.save()
+    // send notification to Admin
+    // EmailNotificationService.notify(report.administrativeCentar)
     ctx.body = { report }
 
   } catch (err) {
-    ctx.throw(422, err.message)
+    ctx.throw(422, err.data)
   }
 })
 
